@@ -1,0 +1,48 @@
+name: validate-godex
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - "feature/**"
+      - "fix/**"
+      - "chore/**"
+
+concurrency:
+  group: validate-godex-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  structure:
+    name: Structure and contract checks
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate repository structure
+        shell: pwsh
+        run: pwsh -File tools/validate-godex.ps1 -SkipGodot
+
+  godot-headless:
+    name: Godot headless smoke
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Godot .NET 4.6.2
+        shell: pwsh
+        run: |
+          $url = "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_mono_win64.zip"
+          Invoke-WebRequest -Uri $url -OutFile godot.zip
+          Expand-Archive godot.zip -DestinationPath godot
+
+      - name: Run headless smoke test
+        shell: pwsh
+        run: |
+          $godot = Get-ChildItem -Path godot -Recurse -Filter "*console.exe" | Select-Object -First 1
+          pwsh -File tools/validate-godex.ps1 -GodotPath $godot.FullName

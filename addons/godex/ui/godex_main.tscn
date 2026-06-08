@@ -1,0 +1,1229 @@
+[gd_scene load_steps=1 format=3]
+
+[node name="GodexMain" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Root" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="ProgressOverlayLayer" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ComposerPopoverLayer" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Shell" type="HBoxContainer" parent="Root"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SidebarPanel" type="PanelContainer" parent="Root/Shell"]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+
+[node name="Sidebar" type="VBoxContainer" parent="Root/Shell/SidebarPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TopNav" type="VBoxContainer" parent="Root/Shell/SidebarPanel/Sidebar"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NewChat" type="Button" parent="Root/Shell/SidebarPanel/Sidebar/TopNav"]
+layout_mode = 2
+text = "新对话"
+
+[node name="Search" type="Button" parent="Root/Shell/SidebarPanel/Sidebar/TopNav"]
+layout_mode = 2
+text = "搜索"
+
+[node name="Plugins" type="Button" parent="Root/Shell/SidebarPanel/Sidebar/TopNav"]
+layout_mode = 2
+text = "插件"
+
+[node name="Automation" type="Button" parent="Root/Shell/SidebarPanel/Sidebar/TopNav"]
+layout_mode = 2
+text = "自动化"
+
+[node name="ProjectLabel" type="Label" parent="Root/Shell/SidebarPanel/Sidebar"]
+visible = false
+layout_mode = 2
+text = "项目"
+
+[node name="ProjectName" type="Label" parent="Root/Shell/SidebarPanel/Sidebar"]
+layout_mode = 2
+text = "Mechoes"
+
+[node name="ThreadScroll" type="ScrollContainer" parent="Root/Shell/SidebarPanel/Sidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Threads" type="VBoxContainer" parent="Root/Shell/SidebarPanel/Sidebar/ThreadScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ConversationLabel" type="Label" parent="Root/Shell/SidebarPanel/Sidebar"]
+visible = false
+layout_mode = 2
+text = "对话"
+
+[node name="Footer" type="HBoxContainer" parent="Root/Shell/SidebarPanel/Sidebar"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="Root/Shell/SidebarPanel/Sidebar/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "设置"
+
+[node name="SidebarResizeHandle" type="Control" parent="Root/Shell"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MainPanel" type="PanelContainer" parent="Root/Shell"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Main" type="VBoxContainer" parent="Root/Shell/MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="HBoxContainer" parent="Root/Shell/MainPanel/Main"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ProjectPill" type="Button" parent="Root/Shell/MainPanel/Main/Header"]
+layout_mode = 2
+text = "Mechoes"
+
+[node name="HeaderSpacer" type="Control" parent="Root/Shell/MainPanel/Main/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EndpointLabel" type="Label" parent="Root/Shell/MainPanel/Main/Header"]
+visible = false
+layout_mode = 2
+text = "http://127.0.0.1:3000/mcp"
+
+[node name="McpStatus" type="Label" parent="Root/Shell/MainPanel/Main/Header"]
+visible = false
+layout_mode = 2
+text = "MCP 已连接"
+
+[node name="HeaderLayoutControls" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Header"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ControlPanelToggle" type="Button" parent="Root/Shell/MainPanel/Main/Header/HeaderLayoutControls"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "≡"
+tooltip_text = "打开启动菜单"
+
+[node name="BottomPanelToggle" type="Button" parent="Root/Shell/MainPanel/Main/Header/HeaderLayoutControls"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+toggle_mode = true
+text = "▁"
+tooltip_text = "显示底部输出"
+
+[node name="SidePanelToggle" type="Button" parent="Root/Shell/MainPanel/Main/Header/HeaderLayoutControls"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "▐"
+tooltip_text = "隐藏右侧检查器"
+
+[node name="RefreshGodex" type="Button" parent="Root/Shell/MainPanel/Main/Header"]
+visible = false
+layout_mode = 2
+text = "刷新"
+
+[node name="Body" type="HBoxContainer" parent="Root/Shell/MainPanel/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="MainCenter" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Welcome" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/Welcome"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "我们应该在 Mechoes 中做些什么？"
+
+[node name="ConversationScroll" type="ScrollContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TranscriptCenter" type="MarginContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ConversationScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Messages" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ConversationScroll/TranscriptCenter"]
+custom_minimum_size = Vector2(1040, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="BottomDrawer" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+visible = false
+custom_minimum_size = Vector2(1040, 188)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BottomDrawerBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/BottomDrawer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BottomDrawerHeader" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/BottomDrawer/BottomDrawerBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BottomDrawerTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/BottomDrawer/BottomDrawerBox/BottomDrawerHeader"]
+layout_mode = 2
+text = "终端"
+
+[node name="BottomDrawerSubtitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/BottomDrawer/BottomDrawerBox/BottomDrawerHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "命令运行审计与输出"
+
+[node name="BottomDrawerScroll" type="ScrollContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/BottomDrawer/BottomDrawerBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="BottomDrawerList" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/BottomDrawer/BottomDrawerBox/BottomDrawerScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ChangeReviewSurface" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+visible = false
+custom_minimum_size = Vector2(1040, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ChangeReviewBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ChangeReviewStrip" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ChangeReviewToggle" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox/ChangeReviewStrip"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+text = "›"
+
+[node name="ChangeReviewTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox/ChangeReviewStrip"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0 个文件已更改"
+
+[node name="ChangeReviewAdded" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox/ChangeReviewStrip"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "+0"
+
+[node name="ChangeReviewRemoved" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox/ChangeReviewStrip"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+horizontal_alignment = 2
+text = "-0"
+
+[node name="ChangeReviewAction" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox/ChangeReviewStrip"]
+custom_minimum_size = Vector2(72, 30)
+layout_mode = 2
+text = "审查"
+
+[node name="ChangeReviewFiles" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ChangeReviewSurface/ChangeReviewBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SearchPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+size_flags_vertical = 3
+visible = false
+
+[node name="SearchBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SearchPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SearchTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SearchPanel/SearchBox"]
+layout_mode = 2
+text = "搜索"
+
+[node name="SearchInput" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SearchPanel/SearchBox"]
+layout_mode = 2
+placeholder_text = "搜索会话、项目文件、场景、脚本和 MCP 工具"
+
+[node name="SearchResults" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SearchPanel/SearchBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PluginsPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+size_flags_vertical = 3
+visible = false
+
+[node name="PluginsBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/PluginsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PluginsTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/PluginsPanel/PluginsBox"]
+layout_mode = 2
+text = "插件"
+
+[node name="PluginsSummary" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/PluginsPanel/PluginsBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "插件系统是后期功能。MCP 服务器请在设置中配置，或输入 /mcp 查看当前连接与工具。"
+
+[node name="PluginsList" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/PluginsPanel/PluginsBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="McpPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+size_flags_vertical = 3
+visible = false
+
+[node name="McpBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/McpPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="McpTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/McpPanel/McpBox"]
+layout_mode = 2
+text = "MCP"
+
+[node name="McpSummary" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/McpPanel/McpBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "项目内 Godot .NET MCP 是 Godex 的编辑器能力入口。"
+
+[node name="McpToolList" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/McpPanel/McpBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="AutomationPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+size_flags_vertical = 3
+visible = false
+
+[node name="AutomationBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AutomationTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox"]
+layout_mode = 2
+text = "自动化"
+
+[node name="ApprovalActions" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ApproveLatest" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "批准最新审批"
+
+[node name="RejectLatest" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "拒绝最新审批"
+
+[node name="InjectProbeTool" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "本地 MCP 探针"
+
+[node name="ReplayModelResponse" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "本地模型回放"
+
+[node name="ProviderProbe" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "Provider 探针"
+
+[node name="ExecuteNextTool" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "执行下个工具"
+
+[node name="SendContinuation" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "发送续跑请求"
+
+[node name="ReplayContinuation" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ApprovalActions"]
+layout_mode = 2
+text = "本地续跑回放"
+
+[node name="CommandActions" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RequestCommandApproval" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/CommandActions"]
+layout_mode = 2
+text = "请求命令审批"
+
+[node name="ExecuteApprovedCommand" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/CommandActions"]
+layout_mode = 2
+text = "执行已批准命令"
+
+[node name="CancelCommandRun" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/CommandActions"]
+layout_mode = 2
+text = "取消命令"
+
+[node name="SubagentActions" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CancelSubagentTask" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/SubagentActions"]
+layout_mode = 2
+text = "取消子智能体"
+
+[node name="HandoffSubagentResult" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/SubagentActions"]
+layout_mode = 2
+text = "交接结果"
+
+[node name="ContinuationPreview" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox"]
+layout_mode = 2
+
+[node name="ContinuationPreviewBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ContinuationPreview"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ContinuationPreviewTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ContinuationPreview/ContinuationPreviewBox"]
+layout_mode = 2
+text = "续跑预览"
+
+[node name="ContinuationPreviewDetail" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox/ContinuationPreview/ContinuationPreviewBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "暂无待发送工具结果续跑。"
+
+[node name="AutomationList" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/AutomationPanel/AutomationBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ArchivedPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+custom_minimum_size = Vector2(840, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+visible = false
+
+[node name="ArchivedBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ArchivedPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ArchivedTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ArchivedPanel/ArchivedBox"]
+layout_mode = 2
+text = "已归档对话"
+
+[node name="ArchivedSummary" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ArchivedPanel/ArchivedBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "恢复归档会话后，它会重新回到左侧列表。"
+
+[node name="ArchivedSearchInput" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ArchivedPanel/ArchivedBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "搜索已归档对话"
+
+[node name="ArchivedResults" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ArchivedPanel/ArchivedBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="SettingsPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+layout_mode = 2
+size_flags_vertical = 3
+visible = false
+
+[node name="SettingsBox" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SettingsRail" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BackToApp" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "← 返回应用"
+tooltip_text = "返回 Godex 对话工作区。"
+
+[node name="SettingsSearch" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+placeholder_text = "搜索设置..."
+
+[node name="PersonalTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "个人"
+
+[node name="GeneralCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "常规"
+
+[node name="AppearanceCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+disabled = true
+text = "外观"
+tooltip_text = "外观设置将在主题偏好接入后启用。"
+
+[node name="ConfigCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "配置"
+
+[node name="IntegrationTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "集成"
+
+[node name="McpCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "MCP 服务器"
+
+[node name="SkillsCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "Skills"
+
+[node name="CodingTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "编码"
+
+[node name="ShellCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "命令行"
+
+[node name="ArchiveTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "已归档"
+
+[node name="ArchiveCategory" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsRail"]
+layout_mode = 2
+text = "已归档对话"
+
+[node name="SettingsContentLeftSpacer" type="Control" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsContentWrap" type="MarginContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="SettingsContentRightSpacer" type="Control" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsScroll" type="ScrollContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SettingsContentCenter" type="CenterContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SettingsContent" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="SettingsTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "常规"
+
+[node name="SettingsNoResults" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "没有匹配的设置"
+
+[node name="ProviderSectionTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "供应商"
+
+[node name="ProviderCard" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+
+[node name="ProviderSettings" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ProviderRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ProviderCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ProviderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProviderLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ProviderRow/ProviderCopy"]
+layout_mode = 2
+text = "供应商"
+
+[node name="ProviderHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ProviderRow/ProviderCopy"]
+layout_mode = 2
+text = "选择 OpenAI 兼容的模型供应商。"
+
+[node name="Provider" type="OptionButton" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ProviderRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+item_count = 4
+selected = 0
+popup/item_0/text = "openai"
+popup/item_0/id = 0
+popup/item_1/text = "azure_openai"
+popup/item_1/id = 1
+popup/item_2/text = "openai_compatible"
+popup/item_2/id = 2
+popup/item_3/text = "yurenapi"
+popup/item_3/id = 3
+
+[node name="BaseUrlRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BaseUrlCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/BaseUrlRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BaseUrlLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/BaseUrlRow/BaseUrlCopy"]
+layout_mode = 2
+text = "API Base URL"
+
+[node name="BaseUrlHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/BaseUrlRow/BaseUrlCopy"]
+layout_mode = 2
+text = "OpenAI Responses API 或兼容服务的根地址。"
+
+[node name="BaseUrl" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/BaseUrlRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "https://api.openai.com"
+
+[node name="ApiKeyRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ApiKeyCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ApiKeyLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyRow/ApiKeyCopy"]
+layout_mode = 2
+text = "API Key"
+
+[node name="ApiKeyHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyRow/ApiKeyCopy"]
+layout_mode = 2
+text = "可留空并优先从环境变量读取。"
+
+[node name="ApiKey" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+secret = true
+placeholder_text = "可留空，优先使用环境变量"
+
+[node name="ApiKeyEnvRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ApiKeyEnvCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyEnvRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ApiKeyEnvLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyEnvRow/ApiKeyEnvCopy"]
+layout_mode = 2
+text = "API Key 环境变量"
+
+[node name="ApiKeyEnvHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyEnvRow/ApiKeyEnvCopy"]
+layout_mode = 2
+text = "Godex 会先检查此环境变量。"
+
+[node name="ApiKeyEnv" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ApiKeyEnvRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "OPENAI_API_KEY"
+
+[node name="ApiStatus" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings"]
+layout_mode = 2
+autowrap_mode = 3
+text = "认证状态：缺少 API Key"
+
+[node name="ModelRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ModelCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ModelRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ModelLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ModelRow/ModelCopy"]
+layout_mode = 2
+text = "模型"
+
+[node name="ModelHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ModelRow/ModelCopy"]
+layout_mode = 2
+text = "聊天框可临时切换，此处为默认模型。"
+
+[node name="Model" type="OptionButton" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/ProviderCard/ProviderSettings/ModelRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+item_count = 1
+selected = 0
+popup/item_0/text = "gpt-5.5"
+
+[node name="IntegrationSectionTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "集成"
+
+[node name="IntegrationCard" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+
+[node name="IntegrationSettings" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="McpServerRow" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings"]
+layout_mode = 2
+
+[node name="McpServerContent" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ServerStatusIcon" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "●"
+tooltip_text = "MCP 连接状态"
+
+[node name="EndpointCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EndpointLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent/EndpointCopy"]
+layout_mode = 2
+text = "Godot .NET MCP"
+
+[node name="EndpointHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent/EndpointCopy"]
+layout_mode = 2
+text = "作为普通 MCP 来源接入，工具调用会显示在来源区域。"
+
+[node name="Endpoint" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+text = "http://127.0.0.1:3000/mcp"
+tooltip_text = "MCP streamable-http endpoint"
+
+[node name="McpEnabled" type="CheckBox" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent"]
+layout_mode = 2
+button_pressed = true
+text = ""
+tooltip_text = "启用或停用此 MCP 来源"
+
+[node name="RefreshMcpTools" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "↻"
+tooltip_text = "重新发现此 MCP server 的工具"
+
+[node name="McpServerSettings" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/McpServerRow/McpServerContent"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "⚙"
+tooltip_text = "编辑此 MCP server"
+
+[node name="AddMcpServer" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+disabled = true
+text = "+ MCP server"
+tooltip_text = "后续将支持添加更多 MCP server。当前版本先稳定管理 Godot .NET MCP。"
+
+[node name="ApiModeRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ApiModeCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/ApiModeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ApiModeLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/ApiModeRow/ApiModeCopy"]
+layout_mode = 2
+text = "API 模式"
+
+[node name="ApiModeHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/ApiModeRow/ApiModeCopy"]
+layout_mode = 2
+text = "默认使用 Responses API，兼容模式用于非标准服务。"
+
+[node name="ApiMode" type="OptionButton" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/IntegrationCard/IntegrationSettings/ApiModeRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Responses API"
+popup/item_0/id = 0
+popup/item_1/text = "Chat Completions Compatible"
+popup/item_1/id = 1
+
+[node name="PermissionsSectionTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "权限"
+
+[node name="FeatureCard" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+
+[node name="FeatureToggles" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/FeatureCard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SkillsEnabled" type="CheckBox" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/FeatureCard/FeatureToggles"]
+layout_mode = 2
+button_pressed = true
+text = "Skill 自动触发"
+tooltip_text = "让 Godex 根据请求自动加载匹配的本地 Skill。"
+
+[node name="CompressionEnabled" type="CheckBox" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/FeatureCard/FeatureToggles"]
+layout_mode = 2
+button_pressed = true
+text = "自动上下文压缩"
+tooltip_text = "长会话会自动压缩上下文，保持 Agent 能持续工作。"
+
+[node name="CommandEnabled" type="CheckBox" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/FeatureCard/FeatureToggles"]
+layout_mode = 2
+text = "命令行能力（需要审批）"
+tooltip_text = "允许 Godex 准备命令行操作，执行前仍需要审批。"
+
+[node name="SkillManagerTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "Skill 管理"
+
+[node name="SkillManagerSearch" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+placeholder_text = "搜索本地 Skill"
+
+[node name="SkillManagerList" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CodingSectionTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "编码"
+
+[node name="CodingCard" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+
+[node name="CodingSettings" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/CodingCard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CommandShellRow" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/CodingCard/CodingSettings"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CommandShellCopy" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/CodingCard/CodingSettings/CommandShellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CommandShellLabel" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/CodingCard/CodingSettings/CommandShellRow/CommandShellCopy"]
+layout_mode = 2
+text = "命令 Shell"
+
+[node name="CommandShellHelp" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/CodingCard/CodingSettings/CommandShellRow/CommandShellCopy"]
+layout_mode = 2
+text = "本地命令工具使用的默认 shell。"
+
+[node name="CommandShell" type="LineEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/CodingCard/CodingSettings/CommandShellRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "PowerShell"
+
+[node name="CapabilityPreviewTitle" type="Label" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+text = "能力预览"
+
+[node name="CapabilityPreview" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SettingsActions" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 8
+
+[node name="SaveSettings" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/SettingsActions"]
+layout_mode = 2
+text = "保存"
+
+[node name="CloseSettings" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/SettingsPanel/SettingsBox/SettingsContentWrap/SettingsScroll/SettingsContentCenter/SettingsContent/SettingsActions"]
+layout_mode = 2
+text = "关闭"
+
+[node name="ComposerPanel" type="PanelContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter"]
+custom_minimum_size = Vector2(1040, 138)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ComposerBox" type="VBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SlashCommandPanel" type="PanelContainer" parent="ComposerPopoverLayer"]
+visible = false
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+
+[node name="SlashCommandBox" type="VBoxContainer" parent="ComposerPopoverLayer/SlashCommandPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SlashCommandTitle" type="Label" parent="ComposerPopoverLayer/SlashCommandPanel/SlashCommandBox"]
+visible = false
+layout_mode = 2
+text = "命令"
+
+[node name="SlashCommandScroll" type="ScrollContainer" parent="ComposerPopoverLayer/SlashCommandPanel/SlashCommandBox"]
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="SlashCommandList" type="VBoxContainer" parent="ComposerPopoverLayer/SlashCommandPanel/SlashCommandBox/SlashCommandScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Prompt" type="TextEdit" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "要求后续变更"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="ApprovalModePanel" type="Control" parent="ComposerPopoverLayer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ApprovalModeSurface" type="PanelContainer" parent="ComposerPopoverLayer/ApprovalModePanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ApprovalModeBox" type="VBoxContainer" parent="ComposerPopoverLayer/ApprovalModePanel/ApprovalModeSurface"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="ApprovalModeTitle" type="Label" parent="ComposerPopoverLayer/ApprovalModePanel/ApprovalModeSurface/ApprovalModeBox"]
+layout_mode = 2
+text = "如何批准 Godex 操作？"
+
+[node name="ApprovalModeList" type="VBoxContainer" parent="ComposerPopoverLayer/ApprovalModePanel/ApprovalModeSurface/ApprovalModeBox"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="AddContextPanel" type="Control" parent="ComposerPopoverLayer"]
+visible = false
+clip_contents = false
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AddContextSurface" type="PanelContainer" parent="ComposerPopoverLayer/AddContextPanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AddContextBox" type="VBoxContainer" parent="ComposerPopoverLayer/AddContextPanel/AddContextSurface"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="AddContextTitle" type="Label" parent="ComposerPopoverLayer/AddContextPanel/AddContextSurface/AddContextBox"]
+layout_mode = 2
+text = "添加上下文"
+
+[node name="AddContextList" type="VBoxContainer" parent="ComposerPopoverLayer/AddContextPanel/AddContextSurface/AddContextBox"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="ComposerControls" type="HBoxContainer" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AddContext" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+text = ""
+tooltip_text = "添加上下文：项目摘要、IDE 状态、目标或后续文件/截图来源。"
+
+[node name="ApprovalButton" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+text = "替我审批"
+
+[node name="ModeDivider" type="VSeparator" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+
+[node name="GoalButton" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+text = "目标"
+
+[node name="ControlSpacer" type="Control" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ModelButton" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+visible = false
+layout_mode = 2
+text = "5.5"
+
+[node name="ReasoningButton" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+text = "5.5  中  v"
+
+[node name="ModelPickerPanel" type="Control" parent="ComposerPopoverLayer"]
+visible = false
+clip_contents = false
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ModelPickerSurface" type="PanelContainer" parent="ComposerPopoverLayer/ModelPickerPanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModelPickerBox" type="VBoxContainer" parent="ComposerPopoverLayer/ModelPickerPanel/ModelPickerSurface"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="ModelPickerTitle" type="Label" parent="ComposerPopoverLayer/ModelPickerPanel/ModelPickerSurface/ModelPickerBox"]
+layout_mode = 2
+text = "模型"
+
+[node name="ModelPickerList" type="VBoxContainer" parent="ComposerPopoverLayer/ModelPickerPanel/ModelPickerSurface/ModelPickerBox"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="ReasoningPickerPanel" type="Control" parent="ComposerPopoverLayer"]
+visible = false
+clip_contents = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ReasoningPickerSurface" type="PanelContainer" parent="ComposerPopoverLayer/ReasoningPickerPanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReasoningPickerBox" type="VBoxContainer" parent="ComposerPopoverLayer/ReasoningPickerPanel/ReasoningPickerSurface"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="ReasoningPickerTitle" type="Label" parent="ComposerPopoverLayer/ReasoningPickerPanel/ReasoningPickerSurface/ReasoningPickerBox"]
+layout_mode = 2
+text = "思考强度"
+
+[node name="ReasoningPickerList" type="VBoxContainer" parent="ComposerPopoverLayer/ReasoningPickerPanel/ReasoningPickerSurface/ReasoningPickerBox"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="IdeContextButton" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+text = "IDE 上下文"
+
+[node name="SendButton" type="Button" parent="Root/Shell/MainPanel/Main/Body/MainCenter/ComposerPanel/ComposerBox/ComposerControls"]
+layout_mode = 2
+text = ""
+
+[node name="LayoutMenuPanel" type="Control" parent="ProgressOverlayLayer"]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 0
+offset_right = 360.0
+offset_bottom = 322.0
+mouse_filter = 2
+
+[node name="LayoutMenuSurface" type="PanelContainer" parent="ProgressOverlayLayer/LayoutMenuPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LayoutMenuBox" type="VBoxContainer" parent="ProgressOverlayLayer/LayoutMenuPanel/LayoutMenuSurface"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LayoutMenuActions" type="VBoxContainer" parent="ProgressOverlayLayer/LayoutMenuPanel/LayoutMenuSurface/LayoutMenuBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LayoutMenuDivider" type="HSeparator" parent="ProgressOverlayLayer/LayoutMenuPanel/LayoutMenuSurface/LayoutMenuBox"]
+layout_mode = 2
+
+[node name="LayoutMenuRecommendedTitle" type="Label" parent="ProgressOverlayLayer/LayoutMenuPanel/LayoutMenuSurface/LayoutMenuBox"]
+layout_mode = 2
+text = "推荐"
+
+[node name="LayoutMenuRecommended" type="VBoxContainer" parent="ProgressOverlayLayer/LayoutMenuPanel/LayoutMenuSurface/LayoutMenuBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RightRail" type="PanelContainer" parent="ProgressOverlayLayer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_top = 84.0
+offset_right = -16.0
+offset_bottom = 0.0
+grow_horizontal = 0
+size_flags_vertical = 0
+
+[node name="RightRailBox" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ProgressSection" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ProgressTitle" type="Label" parent="ProgressOverlayLayer/RightRail/RightRailBox/ProgressSection"]
+layout_mode = 2
+text = "进度"
+
+[node name="ProgressList" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox/ProgressSection"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ProgressOutputDivider" type="HSeparator" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+visible = false
+layout_mode = 2
+
+[node name="OutputSection" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="OutputTitle" type="Label" parent="ProgressOverlayLayer/RightRail/RightRailBox/OutputSection"]
+layout_mode = 2
+text = "输出"
+
+[node name="OutputList" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox/OutputSection"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="OutputSubAgentsDivider" type="HSeparator" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+visible = false
+layout_mode = 2
+
+[node name="SubAgentsSection" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SubAgentsTitle" type="Label" parent="ProgressOverlayLayer/RightRail/RightRailBox/SubAgentsSection"]
+layout_mode = 2
+text = "子智能体"
+
+[node name="SubAgentsList" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox/SubAgentsSection"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SubAgentsSourcesDivider" type="HSeparator" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+visible = false
+layout_mode = 2
+
+[node name="SourcesSection" type="VBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SourcesTitle" type="Label" parent="ProgressOverlayLayer/RightRail/RightRailBox/SourcesSection"]
+layout_mode = 2
+text = "来源"
+
+[node name="SourceList" type="HBoxContainer" parent="ProgressOverlayLayer/RightRail/RightRailBox/SourcesSection"]
+layout_mode = 2
+theme_override_constants/separation = 8

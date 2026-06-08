@@ -1,0 +1,36 @@
+.godot/
+.mono/
+bin/
+obj/
+export_presets.cfg
+*.tmp
+*.log
+*.uid
+*.import
+
+# Godex local/user persisted settings snapshots. Runtime settings are stored
+# under Godot user://, but ignore project-local copies to prevent key leaks.
+settings.json
+godex/settings.json
+user/godex/settings.json
+userdata/godex/settings.json
+addons/godex/settings.json
+*.local.json
+*.secrets.json
+godex.local.json
+settings.local.json
+
+# Keep only the two public README screenshots under resources/.
+# Local validation screenshots and reference image captures may include
+# project names, editor paths, private UI state, or other contextual details.
+docs/references/validation/
+docs/references/screenshots/
+docs/references/**/*.png
+docs/references/**/*.jpg
+docs/references/**/*.jpeg
+docs/references/**/*.webp
+docs/references/**/*.gif
+
+# Local project validation material.
+*Mechoes*
+*mechoes*

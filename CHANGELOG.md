@@ -1,0 +1,208 @@
+# Changelog
+
+## Unreleased
+
+### Added
+
+- Added the initial Godex Godot editor plugin with a Codex-inspired workbench UI.
+- Added MCP status, Godot quick actions, progress tracking, output summaries, review controls, and settings panels.
+- Added headless validation scripts and CI workflow for plugin structure and GDScript checks.
+- Added live capability previews for MCP, Skill, command-line, and context compression settings.
+- Added structured Agent turn dry-run audit output for OpenAI payloads, MCP request drafts, approval checkpoints, sub-agents, command requests, and compression summaries.
+- Added durable automatic context-compaction summaries so manual and threshold-triggered compaction publish transcript, Automation, and capability-preview evidence with before/after token estimates.
+- Added context-window warning and compaction-history summaries so Automation and capability previews show distance to the auto-compaction threshold plus recent compact events.
+- Added composer-level low-context affordances: the add-context button warns near the compaction threshold, the add-context menu exposes a compact-current-session action, and send-button tooltips preview automatic compaction.
+- Added a Codex desktop UX reference note for icon buttons, panel radius, tooltips, and progress feedback.
+- Added Codex-style composer controls for model choice, reasoning effort, approval mode, IDE context, and goal tracking.
+- Added real reasoning-effort propagation from the composer into Responses API and Chat Completions payloads, request audits, retry snapshots, and tool-result continuation requests.
+- Added provider preset catalog support with a Yuren OpenAI-compatible configuration and model metadata.
+- Added a preserved non-default Yuren OpenAI provider reference file and startup migration so explicit Yuren settings or legacy `YURENAPI_API_KEY` values normalize to `yurenapi`, the recommended `https://yurenapi.cn/v1` when no valid Yuren base URL is present, and `YUREN_API_KEY` for development validation, while retaining `https://yurenapi.com/v1` as an accepted persisted alternate base URL.
+- Added `.gitignore` safeguards for local Godex settings snapshots so persisted API settings are less likely to be committed accidentally.
+- Added validation-time leak checks that fail when tracked files include local Godex settings snapshots or obvious raw API key/bearer token literals.
+- Added automatic Godot distraction-free mode entry for the Godex main screen with restoration when leaving.
+- Added a preserved Codex plugin-system UX reference as a later-stage design input without starting plugin-system implementation.
+- Added a maintained Codex screenshot reference index with classified local screenshot assets.
+- Documented the standalone Godex repository boundary for project-local Git management.
+- Added a persistent session store for active thread messages, new sessions, session search, archive metadata, and fork metadata.
+- Added approval checkpoint records, pending approval display, and approve/reject decision persistence.
+- Added OpenAI API authentication snapshots with masked key status, request headers, and settings-panel readiness feedback.
+- Added an OpenAI execution service layer for auditable request readiness, response parsing, tool-call extraction, and normalized API errors.
+- Added session-scoped model events for OpenAI request audits, redacted headers, and Automation view summaries.
+- Added session-backed sub-agent task records with status updates, right-inspector rows, Automation summaries, and persisted restore coverage.
+- Added sub-agent cancellation and result-handoff lifecycle metadata so task cards, model events, and Automation summaries can distinguish cancellable, cancelled, handoff-ready, and handed-off records before a real external runner exists.
+- Added session-backed sub-agent worker notifications and parent-child edge records with open/closed topology queries, Automation summaries, and restore coverage.
+- Added a session-backed sub-agent child-thread foundation that can create local child conversations, link parent-child edges, and complete or fail the parent task through worker notifications.
+- Added a first-stage Skill registry and manager that scans local `SKILL.md` roots, parses `agents/openai.yaml` metadata, searches local Skills, persists disabled paths, projects enabled Skill hints into Agent instructions, and injects explicitly mentioned `$skill` `SKILL.md` content for a turn.
+- Added composer reference foundations for selected assistant text and image URL/data references: selection actions create removable reference chips above the composer, sent user messages carry and consume those references, and OpenAI request builders serialize selected text plus supported image references into the next request only.
+- Added Codex-aligned right-side user message bubbles while assistant, tool, and command rows stay in the continuous left transcript flow.
+- Added a Codex-style bottom terminal drawer that rebuilds recent command-run audits with status, runner metadata, output previews, and timelines without treating command logs as generated artifacts.
+- Added Codex-style archive management: sidebar hover pin/archive actions, red archive confirmation, a transient archive notice with Settings link, and a Settings-owned archived conversations page with search, delete, and cancel-archive restore controls.
+- Added Codex-style direct composer sending with running-turn queued user-message rows, per-row guide/delete actions, and next-turn guide instructions preserved in model-event and Automation audits.
+- Added first-stage queued user-message draining so queued composer input can start the next turn once the Agent loop is idle, credentials are ready, and the composer has no unsent draft.
+- Added queued slash-command parsing so queued `/goal`, `/compact`, and other local slash commands drain through the local command boundary without requiring an OpenAI API key.
+- Added queued `!` shell prompt handoff so Codex-style queued shell input creates command-run audit and approval records without executing before approval.
+- Added queue-row cancellation for queued composer messages so users can remove pending input before it drains.
+- Added queue-row guide conversion so queued composer input can become one-turn guidance before the next Agent request.
+- Added normalized successful tool-call transcript status text so real MCP tool completions render as localized action rows instead of raw transport statuses.
+- Added pending tool-call records with approval/rejection decisions and response-parser integration into session model events.
+- Added MCP tool-call dispatch readiness with approval gating, Godex context-to-MCP tool mapping, and Automation view summaries.
+- Added MCP tools/list discovery request modeling, response parsing, cached tool summaries, and MCP page discovery status.
+- Added MCP tools/list HTTPRequest transport scaffolding with request/transport status events and grouped tool parsing.
+- Added MCP tools/call execution transport with JSON-RPC request bodies, normalized tool results, and an Automation action for executing the next approved tool call.
+- Added an Automation probe action that injects a local MCP context tool call so the Godex UI can validate the full MCP execution path without a live OpenAI response.
+- Added real OpenAI HTTPRequest transport from the composer, including request lifecycle model events, HTTP/API error normalization, assistant-message persistence, and tool-call queueing from live model responses.
+- Added OpenAI tool-result continuation requests so completed MCP tool calls can be fed back into the model loop, with blocked audit events for missing API keys or unresolved sibling tool calls, assisted/full-access auto sending, and request-approval gating.
+- Added an explicit Automation view continuation queue and send action so prepared tool-result OpenAI requests can be reviewed before external transmission.
+- Added a Godex header refresh action that safely rebuilds the main screen and controller after addon files are updated in a running editor session.
+- Added an Automation continuation preview panel showing the pending OpenAI endpoint, model, API mode, key source, status, and risk before sending.
+- Added state-aware Automation send-button gating so OpenAI continuation sends are disabled until a ready request exists.
+- Added Codex-style `/status`, `/side`, `/personality`, `/review`, `/feedback`, `/model`, and `/reasoning` slash-command coverage so the composer command palette can expose session status and local workflow controls.
+- Added a composer stop action for canceling in-flight OpenAI requests with audit events and duplicate-completion suppression.
+- Added an explicit OpenAI retry action that retains failed or canceled transport requests in memory, exposes a retry summary, and replays them only when the user clicks `重试`.
+- Added a Codex-style Agent loop tracker and automatic tool-call advancement path that continues MCP tool execution and OpenAI tool-result continuation until final response, approval, cancellation, missing credentials, or an explicit continuation boundary stops the loop.
+- Added review-mode OpenAI send approval gates for first-turn, retry, and manual tool-result continuation requests, including source metadata and approval-triggered dispatch.
+- Added local slash commands for session control and goal handling, including `/new`, `/resume`, `/fork`, `/archive`, `/rename`, `/pin`, `/goal`, `/compact`, and `/help`.
+- Added a composer slash-command suggestion panel with filtered command rows, aliases, parameter hints, and click-to-insert behavior.
+- Added keyboard navigation for the composer slash-command menu with Up/Down selection, Enter insertion, and Esc closing.
+- Added a Codex-style approval mode pill with blue shield emphasis, dropdown affordance, and mode-specific hover tooltips.
+- Added floating composer popover positioning so approval and slash-command menus open like Codex overlays without resizing the input surface.
+- Added a Codex-style combined composer picker for reasoning effort and model selection, including checked rows, a hover-only right-side model submenu, and custom-model visibility.
+- Added settings-page model choices from the provider catalog so Yuren OpenAI-compatible settings expose the supported `gpt-5.4-mini`, `gpt-5.4`, and `gpt-5.5` names instead of relying on free-form model text.
+- Added a compact sidebar thread more menu for rename, pin/unpin, fork, and archive actions without crowding each session row.
+- Added a sidebar thread rename action with a floating inline title editor that updates the targeted session by ID without changing the active thread accidentally.
+- Added openable session search results so clicking a matching conversation restores that thread and returns to chat.
+- Added an archived conversations view with restore-and-open rows so archived sessions can return to the active sidebar list.
+- Added archived-conversation filtering so the archived view can search only hidden history without changing normal search.
+- Added sidebar pinned-session grouping so pinned conversations are visually separated from recent sessions while archived sessions stay hidden.
+- Added composer `+` project-summary and optional recommended-file context rows sourced from the Codex-style add-context menu, with visible user-facing messages only where appropriate plus model-event audit records.
+- Added state-backed composer Plan Mode semantics: toggling `计划模式` now persists, records auditable model events, injects a Codex Plan Mode instruction contract, and omits OpenAI tool schemas for the next initial request.
+- Added session-backed active goal records so `/goal` stores objective/status/timing metadata, restores with the thread, appears in Automation summaries, and injects active goals into Agent instructions.
+- Hardened session rename, pin, archive, restore, and generated thread IDs so state changes persist to the stored thread record and avoid same-tick ID collisions.
+- Changed chat rendering so user-facing assistant replies stay fully visible, while only tool and command disclosure rows collapse implementation details.
+- Added ignore rules for Godot-generated `.uid` and `.import` artifacts so opening the plugin project does not pollute feature diffs.
+- Added a Codex-style composer `+` add-context menu with real local actions for MCP project summary, IDE context, goal tracking, and session compaction while keeping unsupported file/image/screenshot sources disabled.
+- Added a real OpenAI SSE text-streaming path using `HTTPClient`, in-place assistant message updates, a lightweight `正在思考` shimmer status, and stream-aware cancellation/retry state.
+- Added OpenAI stream HTTP-error body capture and a non-stream fallback attempt for stream-compatible failures, preserving provider diagnostics and retry state without treating every 5xx as a user configuration problem.
+- Added a one-shot plain Chat Completions compatibility fallback that strips streaming, tools, and reasoning-only fields after compatible-provider HTTP failures, so ordinary text turns can still close with a visible assistant response when a provider rejects richer request fields.
+- Added runtime provider normalization before first-turn, tool-result continuation, and retry requests so explicit Yuren/OpenAI-compatible settings keep Chat Completions endpoints even if an older session snapshot still points at Responses.
+- Added retryable Chat Completions fallback coverage for stream timeout, stream disconnect, poll/request errors, and empty completion events, with empty completions treated as failed/fallback-worthy rather than placeholder successful answers.
+- Added Chat Completions text-part parsing for non-stream and stream responses from OpenAI-compatible providers.
+- Added plain Chat fallback sanitization for tool-result continuation payloads so degraded OpenAI-compatible retries convert `assistant.tool_calls` and `role=tool` messages into pure text instead of resending unsupported tool protocol fields.
+- Added fallback lifecycle coverage so plain Chat compatibility fallback stops the previous stream poll timer before starting the HTTPRequest fallback path.
+- Added a direct non-stream `HTTPRequest` first-send path for explicit OpenAI-compatible Chat Completions providers, preserving model/messages/tools/reasoning fields while removing `stream=true`, updating the same assistant placeholder on completion, and auditing the turn as `non_stream_direct`.
+- Added settings-state guards so explicit Yuren/OpenAI-compatible selections keep the provider preset's Chat Completions API mode even when stale UI controls previously showed Responses API.
+- Added stage-aware OpenAI progress labels for provider probes, stream requests, non-stream fallbacks, and plain compatibility fallbacks so failed conversations show which layer is retryable without turning successful request bookkeeping into chat rows.
+- Added state-backed OpenAI diagnostics that preserve stage, HTTP status code, bounded provider body preview, and fallback metadata from transport events while keeping successful request/response rows out of the chat transcript.
+- Added provider-level API mode defaults so Yuren and other OpenAI-compatible presets use `/v1/chat/completions` while the built-in OpenAI preset remains on the Responses API.
+- Changed the right-inspector progress section to render only explicit model-controlled `progress_items`, keeping OpenAI request, retry, tool, and command lifecycle details out of the short-term plan/memory checklist.
+- Added first-stage Codex-style transcript tool rows for MCP tool calls, including running/completed/failed status text, default-collapsed detail bodies, and click-to-expand disclosure in the chat stream.
+- Added state-level transcript items that merge chat messages with tool-call model events so MCP tool rows can be rebuilt after a chat UI refresh instead of depending only on transient controls.
+- Added streamed OpenAI tool-call parsing for Responses function-call stream events and Chat Completions `delta.tool_calls`, with controller-side accumulation before recording transcript tool rows.
+- Added state-backed Codex-style command transcript rows for command requests, including queued/running/completed/failed status text, stdout/stderr/exit-code summaries, and persisted expand/collapse state.
+- Added a safety-first command-run state machine with explicit approval checkpoints, command fingerprint validation, blocked-command filtering, fake-runner smoke coverage, and runner-gated completed/failed/timed-out transcript updates.
+- Added pre-run command safety contracts for shell normalization, project-local working-directory checks, timeout persistence, timeout-aware fingerprints, and command-aware approval decisions.
+- Added Automation command approval and command-run summary rows that expose command ID, command text, shell, project-local working directory, timeout, fingerprint, and status before any real runner exists.
+- Added separate Automation command action buttons for requesting command approval and attempting approved command execution, while preserving runner-unavailable safety until a real command runner is implemented.
+- Added a first-stage approved local command runner for short PowerShell, pwsh, and cmd commands, using Godot `OS.execute` only after the existing approval, fingerprint, safety, and project-local working-directory checks pass.
+- Added structured short-command runner audit metadata for combined output, runner type, elapsed duration, stderr merge handling, and timeout-enforcement boundaries.
+- Added an Automation cancel-command action that cancels the current queued, approval-required, approved, or running command without touching MCP or OpenAI controls.
+- Added structured command transcript output sections for exit code, stdout, and stderr, with transcript-level redaction and truncation before UI rendering.
+- Added command-run timeline events so queued, approval, running, terminal, and blocked states can be replayed as compact transcript steps without enabling a real shell runner.
+- Added bounded command stdout/stderr chunk buffers with state-level API-key redaction so future runners can stream output into transcript rows without bypassing approval gates.
+- Added command cancellation and single-running-command contracts so future shell runners inherit a safe status boundary before real process control is connected.
+- Added a first-stage changed-file review strip above the composer with fixed-width addition/removal counters, expandable file rows, persistent summary state, and a review action placeholder for future diff panes.
+- Added short Codex-style numeric tweening for changed-file addition/removal counters while preserving fixed counter widths to avoid layout jitter.
+- Added a read-only Git change summary parser and `godex_change_review_summary` tool entry so model tool-call data can feed the review strip without running shell commands or applying patches.
+- Added state-owned right-inspector output artifacts so changed-file review rows persist as generated file artifacts without treating logs, MCP payloads, or assistant text as output.
+- Added a Codex-style settings workspace with a dedicated settings rail, return-to-app row, centered scroll content column, grouped setting cards, row-aligned controls, interactive category filtering, settings search filtering, and smoke coverage that keeps chat composer/right inspector chrome out of settings mode.
+- Added settings rail icon styling and an explicit no-results state for settings search so category/search navigation does not degrade into a blank page.
+- Added a state-backed MCP server row in settings with endpoint editing, enable/disable state, discovery status, tool count, refresh affordance, and disabled add-server placeholder for future multi-server management.
+- Added a dedicated Plugins navigation view so MCP management no longer occupies the top-left plugin slot.
+- Added `/mcp` as the local command entry for MCP status and tool discovery, while keeping MCP endpoint configuration in settings.
+- Added Codex-style top-right layout chrome with a launcher menu button, bottom output drawer toggle, and project/thread sidebar toggle.
+- Added a stable Codex-style conversation column contract: right overlays and bottom drawers no longer resize the transcript, the main chat shell keeps rounded corners, and borderless transcript rows retain left/right reading padding.
+- Added transient streamed tool-call preview rows that show live partial arguments as `正在解析` transcript rows, merge index/id deltas into one preview, and clear them before final executable tool-call records are created.
+- Added Codex-style right-aligned user message bubbles with content-aware width limits so short CJK prompts stay readable and long prompts wrap inside the chat column.
+- Added a Codex-style streaming thinking status that keeps `正在思考` in the assistant flow with a left-to-right shimmer, hides successful OpenAI lifecycle rows automatically, and leaves failures visible through assistant error text.
+- Added full-width hover-highlight disclosure headers for each tool and command transcript row so individual uses can be expanded independently for details.
+- Kept Agent loop, MCP context, sub-agent, queued-message, guide, goal, compaction, and OpenAI lifecycle bookkeeping out of the chat transcript while preserving those records in model-event, Automation, and progress surfaces.
+- Added event-driven right inspector sections for progress, generated artifacts, sub-agents, and external tool sources, including empty states for new conversations.
+- Added smoke coverage that rejects internal lifecycle/status rows in the chat transcript after a refresh.
+- Added a Godex main-screen activation fallback that calls Godot's main-screen switch API before forcing the plugin surface visible, making editor automation and refresh validation more reliable.
+- Added transcript filtering for OpenAI request-build, transport, response, and raw stream-trace events so they remain auditable in model events without polluting the readable chat transcript.
+- Added first-class local MCP probe audit events and MCP tool-call source rows so the Automation probe action can be followed from model events, external tool sources, and tool-call execution state without reintroducing static demo data.
+- Added a local model replay action that injects an OpenAI Responses API-compatible fixture, validates response parsing and pending MCP tool-call creation, and marks audit events as replayed without sending external network requests.
+- Added redacted OpenAI stream trace records, transport event counters, timeout/error hints, and OpenAI/local-replay source chips so real chat turns can be audited when a provider stalls, disconnects, or streams tool arguments.
+- Added a local tool-result continuation replay action that exercises the ready continuation-to-final-assistant-message boundary without sending an external OpenAI request, using Codex's function-call-output loop contract as the reference.
+- Added a Provider probe Automation action that sends a minimal non-stream OpenAI-compatible request from the Godot editor process, preserving `provider_probe` source metadata without treating the diagnostic as a generated output artifact or invoked external tool source.
+- Documented the current Mechoes addon sync, live-editor reload, screenshot evidence, and headless validation record for the latest Godex UI parity pass.
+- Added Codex-referenced architecture documentation for unbounded Agent turn follow-up, pending guide draining, child-thread subagents, and slash/status command boundaries.
+- Added a first-stage Codex-compatible `exec_command` tool schema that bridges model command requests into Godex's approval-bound command-run state machine, plus explicit `write_stdin` unsupported reporting until interactive process sessions exist.
+
+### Fixed
+
+- Removed the default fixed 12-step Agent loop cap so Godex follows Codex-style unbounded tool-result follow-up until the model finishes, approval/input blocks, cancellation/error occurs, or context compaction is needed.
+- Fixed auto-completed model tools such as `godex_update_progress` so they can continue through the tool-result follow-up boundary instead of leaving the Agent loop stuck or prematurely stopped.
+- Fixed same-call MCP tool lifecycle projection so running, succeeded, and failed states update one tool row in place instead of rendering duplicate transcript rows.
+- Fixed visible MCP/tool transcript projection so one Agent loop batch renders as a single Codex-style expandable command row, with individual tool states listed only inside the expanded body.
+- Fixed `godex_mcp_context` MCP dispatch mapping so scene, scripts, logs, and runtime scopes call valid Godot .NET MCP tools and arguments instead of failing through an invalid editor-log scope payload.
+- Fixed repeated `godex_mcp_context` requests in one model response so Godex keeps one canonical context request for that sampling boundary instead of displaying the same context tool multiple times.
+- Fixed transcript rebuild fallback rendering so legacy or ungrouped `tool_call` records are still wrapped into one Codex-style batch disclosure instead of leaking repeated `godex_mcp_context` rows after reload.
+- Fixed stale maximum-step transcript messages so older sessions no longer show `Agent 循环已达到最大步数` after the loop contract has moved to Codex-style unbounded follow-up.
+- Fixed delegated sub-agent lifecycle updates so worker notifications and cancellations keep the task's child-Agent source identity while recording notification/cancel sources separately.
+- Fixed Skill-enabled turns so they no longer create automatic pseudo-subagent `项目上下文调查` tasks; Skill availability is recorded as audit context, while true subagents require delegated child-Agent evidence.
+- Fixed running-turn queue-guide handling so queued guide actions record one pending guide instruction instead of also requeueing the same text as a normal user prompt.
+- Fixed hidden internal status handling so state-filtered local bookkeeping messages are not forced back into the visible transcript by the controller.
+- Fixed the Windows validation script so Godot headless stderr leak warnings are captured into log files and judged by exit code plus script-error text instead of being converted into premature PowerShell failures.
+- Fixed live OpenAI streaming replies on Godot 4.6 by removing the unsupported `HTTPClient.get_available_bytes()` call from the SSE read loop and translating stream poll failures into readable network/provider hints, allowing real conversations to reach their final response or error closure instead of stopping on a runtime exception.
+- Fixed stream closure semantics so Responses `response.output_item.done` no longer ends the whole turn, incomplete disconnects become retryable failures instead of false success, non-2xx stream responses show credential/base-URL/model hints, and idle streams stop with a visible timeout.
+- Fixed OpenAI stream finalization so trailing SSE fragments and complete non-stream JSON bodies left in the HTTP buffer can still close the assistant response or tool-call loop instead of appearing as a no-return conversation.
+- Fixed real chat loop stalls by detecting complete JSON response bodies before idle timeout, resuming the Agent loop after approved user-prompt or retry sends, and wrapping Chat Completions tools in the provider-compatible `function` schema.
+- Fixed assisted approval-mode tool-result continuations so completed MCP tool results automatically resume the model loop instead of waiting behind a full-access-only gate.
+- Fixed Responses streaming compatibility so `response.completed` final output is extracted, `response.output_item.added` remains partial tool metadata, and continuation busy checks use the active stream transport state.
+- Fixed Responses tool-result continuation payloads so parsed provider response IDs are preserved as `previous_response_id`, avoiding duplicate full-input replay when a provider returns a stored response ID.
+- Fixed streamed Responses tool-call auditability by caching response IDs from `response.created`/`response.completed`, backfilling accumulated tool calls before continuation, and retaining safe continuation request metadata after pending sends clear.
+- Fixed raw OpenAI stream fallback event names leaking into chat by keeping residual JSON and salvaged disconnect diagnostics in model-event/progress audit surfaces.
+- Fixed Responses final-text parsing so `response.output_text.done`, `response.refusal.done`, `response.completed` top-level text, nested completed response text, and residual JSON convenience fields produce visible assistant output instead of falling back to placeholder completion text.
+- Added controller-level smoke coverage proving complete JSON body fallback responses persist the final assistant text, clear stream state, write audit events, and stop the Agent loop as `final_model_response`.
+- Fixed Yuren provider settings normalization so valid `https://yurenapi.com/v1` settings are treated as a compatible persisted alternate instead of being rewritten to the recommended `https://yurenapi.cn/v1` endpoint on reload.
+- Fixed sidebar conversation hover state so moving between rows or leaving the thread list clears stale rounded hover highlights while preserving the active conversation highlight.
+- Fixed sidebar selection parity so top navigation surfaces and active conversation rows are mutually exclusive, with rounded bordered hover/selected capsules on nav rows.
+- Fixed settings workspace framing so settings mode preserves the shared rounded app frame while keeping the settings rail in the left sidebar instead of nesting it inside the conversation content.
+- Fixed chat composer popovers so reasoning/model/context/approval floating menus close when switching into settings or other non-chat views.
+- Fixed the composer `+` menu so its rounded popover corners are not clipped by the composer surface and its entries use the compact Codex-style attachment/plan/goal/plugin layout with stable Godex-owned icons.
+- Hardened the settings entry path with a direct settings-panel guard and smoke coverage for the real sidebar settings button signal.
+
+### Changed
+
+- Changed the Agent loop from fixed or diagnostic step caps to Codex-style unbounded follow-up, ignoring stale max-step values during normal execution.
+- Changed tool continuation scheduling so a model response's tool batch finishes before the next OpenAI continuation, avoiding back-to-back tool batches without an assistant/model boundary.
+- Changed tool transcript rows from per-call visible disclosures to a Codex-style per-turn batch disclosure while preserving each call's internal execution state for continuation.
+- Changed the Godex sidebar and right inspector to better match Codex visual references: redundant sidebar section labels are hidden, the inspector is wider, and progress/tool/subagent row typography is larger.
+- Changed the composer send/stop button to use a visible light circular surface with dark icon contrast.
+- Changed the composer and transcript column sizing to use a responsive capped Codex-style width, expanding in wide editor layouts while shrinking to the available center lane in split or narrow layouts.
+- Changed the composer so its outer panel stays on the Codex-style centered transcript column while the inner prompt fills that panel; hover copy buttons are limited to user bubbles and assistant text relies on the selection action toolbar.
+- Documented Codex's layered CI strategy for Godex: PR gates should protect core smoke/protocol/state contracts, while heavy live-editor visual and provider/MCP validation remain scheduled, manual, or post-merge until stable.
+- Updated the preserved Yuren provider reference JSON to list `https://yurenapi.cn/v1` as the preferred base URL while retaining `https://yurenapi.com/v1` as an alternate valid URL.
+- Redacted and summarized tool-call argument details in transcript disclosure rows so partial tool-call previews and completed tool rows no longer render raw long arguments or obvious API-key fragments.
+- Corrected the right inspector semantics so `输出` lists generated artifacts or changed files, while `来源` lists invoked external tools such as Godot .NET MCP instead of local bookkeeping events.
+- Narrowed right-inspector `来源` chips to actual external tool/service sources, keeping OpenAI transport audits, provider probes, file/context attachments, and local replay fixtures in transcript or progress surfaces instead.
+- Refined the left project rail so Godex uses the active Godot project name from `ProjectSettings` or MCP project-state data, and conversation rows render full-width rounded active/hover capsules with stable action affordance spacing.
+- Refined the settings workspace so settings categories reuse the shared app sidebar instead of nesting a second left rail inside the main rounded content panel, and top-nav/thread selection ownership remains mutually exclusive.
+- Refined the settings workspace content layout with a scroll-filling center container and wider constrained settings column, keeping the page centered without legacy spacer-dependent alignment.
+- Refined composer micro-interactions so the approval mode pill opens a checked permission menu, IDE context and goal pills hide when disabled and show close affordances only on hover, and the composer panel no longer reserves a large blank area below its controls.
+- Constrained the approval composer popover to Codex desktop's short fixed outer rect with an inner themed surface, avoiding the previous 525px blank area, child-minimum-size expansion, and bottom-edge overflow.
+- Replaced native composer model and reasoning option menus with a scene-owned `ComposerPopoverLayer` combined picker so selection menus stay inspectable and do not resize the composer.
+- Refined the combined model/reasoning picker so outer picker controls no longer clip rounded corners and the right-side model submenu closes after leaving the model-row/submenu hover region.
+- Added the `/ide [on|off]` local slash command so hidden IDE context can be restored without a visible pill.
+- Refined the composer slash-command menu into a Codex-style action list above the input, with left icons, title/description rows, selected-row highlight, and scrollable overflow.
+- Refined the composer input surface to better match the Codex reference with a rounded compact panel, dark multiline input, tighter bottom control row, and an icon-sized `+` context menu entry.
+- Classified new Codex desktop reference screenshots for plugin and MCP settings pages.
+- Refined the right progress UI into a floating single-surface overlay and removed card borders from assistant, tool, and command transcript rows to match the Codex borderless conversation flow.
+- Classified the Codex floating progress and borderless chat reference screenshot.
+- Documented the future icon-asset workflow for screenshot-guided generation, flat chroma-key backgrounds, alpha cleanup, and resolution normalization.
+- Refined the Godex main conversation surface with restored rounded outer chrome, hidden MCP endpoint diagnostics in the header, a fixed-width centered transcript column, and a Codex-style launcher menu that no longer toggles the progress rail.
+- Refined command transcript status labels for approval-required, approved, rejected, timed-out, cancelled, and blocked command-run states.
+- Replaced legacy static right progress/tool/artifact cards with a single right inspector surface whose sections hide or show from live event data, while the side-panel header toggle now controls the floating inspector instead of the app navigation sidebar.
+- Refined right-inspector empty labels so compact HBox source rows do not wrap short Chinese text vertically.
+- Refined the Codex sidebar contract so the top navigation stays limited to New Chat, Search, Plugins, and Automation, archived conversations move into the conversation/history area, thread hover capsules clear when the pointer leaves, and the launcher menu no longer invents static recommended files.
